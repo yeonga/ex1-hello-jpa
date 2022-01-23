@@ -30,10 +30,20 @@ public class JpaMain {
         try {
 
 /*         회원 등록
+            // 비영속 상태 (객체만 생성하고 JPA와는 상관 없는 상태)
            Member member = new Member();
             member.setId(2L);
             member.setName("피자");
+
+            // 영속 상태(엔티티 매니저를 통해 멤버가 관리가 됨) - 이 상태에서는 DB에 쿼리가 날라가는 시점이 아님
+            // transaction 커밋하는 시점에 쿼리가 날라감
             em.persist(member); // member를 저장
+
+            // 회원 엔티티를 영속성 컨텍스트에서 분리, 준영속 상태
+            //em.detach(member);
+
+            // 객체를 삭제한 상태(삭제)
+            // em.remove(member);
 */
 
 /*         회원 수정
@@ -50,17 +60,37 @@ public class JpaMain {
              * SQL과 문법 유사/ SELECT, FROM, WHERE, GROUP BY, HAVING, JOIN 지원
              * JPQL은 엔티티 객체를 대상으로 쿼리 // SQL은 데이터베이스 테이블을 대상으로 쿼리
              */
-            List<Member> result = em.createQuery("select m from Member as m order by m.id desc ", Member.class)
+/*            List<Member> result = em.createQuery("select m from Member as m order by m.id desc ", Member.class)
                     .setFirstResult(0)     // paging 처리를 위한 코드 중 조회 시작 위치
                     .setMaxResults(1)    //  paging 처리를 위한 코드 중  조회 할 데이터 수
                     .getResultList();
             for (Member member : result) {
                 System.out.println("member.name = " +  member.getName());
-            }
+            }*/
 
 /*         회원 삭제
             em.remove(findMember);
 */
+
+/*
+            // 영속
+            Member member1 = new Member(100L, "A");
+            Member member2 = new Member(101L, "B");
+
+            // 이 순간에 영속성 컨텍스트에 엔티티, 쿼리가 쌓이게 됨
+            em.persist(member1);
+            em.persist(member2);
+            System.out.println("=========
+*/
+
+/*
+            // 영속성 컨텍스트에서 변경 감지(dirty checking 하여 update)
+            // JPA는 값을 바꾸면, Transaction Commit 시점에 변경을 반영한다 생각하고 코드 짜기
+            Member memberFind = em.find(Member.class, 100L);
+            memberFind.setName("ABC");
+            System.out.println("=====================");*/
+
+            // 커밋하는 시점에 DB에 쿼리가 날라가게 됨
             tx.commit();
         } catch (Exception e) {
             tx.rollback();
