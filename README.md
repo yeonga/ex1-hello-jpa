@@ -33,3 +33,15 @@
     <li>2. em.clear(); - 영속성 컨텍스트를 완전히 초기화</li>
     <li>3. em.close(); - 영속성 컨텍스트를 종료</li>
   </ul>
+  
+  ## @Entity
+  <ul>
+    <li>@Entity가 붙은 클래스는 JPA가 관리, 엔티티라 한다.</li>
+    <li>JPA를 사용해서 테이블과 매핑할 클래스는 @Entity 필수</li>
+  </ul>
+  <ul></ul>
+  <ul> # 주의
+    <li>기본 생성자 필수(파라미터 없는 public or protected 생성자)</li>
+    <li>final 클래스, enum, interface, inner 클래스 사용 X</li>
+    <li>저장할 필드에 final 사용 X</li>
+  </ul>
