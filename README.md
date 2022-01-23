@@ -45,3 +45,23 @@
     <li>final 클래스, enum, interface, inner 클래스 사용 X</li>
     <li>저장할 필드에 final 사용 X</li>
   </ul>
+  <ul></ul>
+  <ul> @Enumerated
+    <li>자바 enum 타입을 매핑할 때 사용</li>
+    <li>주의! ORDINAL 사용X
+    <table>
+        <tr>
+          <th>속성</th>
+          <th>설명</th>
+          <th>기본값</th>
+        </tr>
+        <tr>
+          <td>value</td>
+          <td>
+            <div>EnumType.ORDINAL : enum 순서를 데이터베이스에 저장</div>
+            <div>EnumType.STRING : enum 이름을 데이터베이스에 저장</div>
+          </td>
+          <td>EnumType.ORDINAL</td>
+        </tr>
+    </table>
+  </ul>
