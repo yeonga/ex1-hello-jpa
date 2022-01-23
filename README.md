@@ -42,13 +42,13 @@
   <ul></ul>
   <ul> # 주의
     <li>기본 생성자 필수(파라미터 없는 public or protected 생성자)</li>
-    <li>final 클래스, enum, interface, inner 클래스 사용 X</li>
-    <li>저장할 필드에 final 사용 X</li>
+    <li>final 클래스, enum, interface, inner 클래스 사용 :x:</li>
+    <li>저장할 필드에 final 사용 :x:</li>
   </ul>
   <ul></ul>
   <ul> @Enumerated
     <li>자바 enum 타입을 매핑할 때 사용</li>
-    <li>주의! ORDINAL 사용X
+    <li>주의! ORDINAL 사용 :x:
     <table>
         <tr>
           <th>속성</th>
