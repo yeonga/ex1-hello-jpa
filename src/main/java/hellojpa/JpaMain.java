@@ -4,7 +4,6 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
-import java.util.List;
 
 public class JpaMain {
 
@@ -89,6 +88,16 @@ public class JpaMain {
             Member memberFind = em.find(Member.class, 100L);
             memberFind.setName("ABC");
             System.out.println("=====================");*/
+
+/*
+            // 영속성 컨텍스트 호출 방법 1. em.flush 를 하여 직접 호출
+            // commit 시점에 DB에 쿼리가 날라가는 것이 아닌, 그 전에 강제로 날라가게 해줌
+            // flush를 한다고 캐시가 다 날라가는 것이 아니고, 변경 감지한 것들이 데이터 베이스에 반영이 되는 것일 뿐
+            Member member = new Member(200L, "member200");
+            em.persist(member);
+            em.flush();
+            tx.commit();
+*/
 
             // 커밋하는 시점에 DB에 쿼리가 날라가게 됨
             tx.commit();
