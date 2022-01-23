@@ -49,6 +49,18 @@ public class JpaMain {
             Member findMember = em.find(Member.class, 1L);
             findMember.setName("피영아1");
 */
+/*
+            // 영속
+            Member member = em.find(Member.class, 200L);
+            member.setName("AAAAA");
+
+            // 준영속 상태로 만드는 방법 1 - 특정 엔티티만 준영속 상태로 전환
+            em.detach(member);
+            // 준영속 상태로 만드는 방법 2 - 영속성 컨텍스트를 완전히 초기화
+            em.clear();
+            // 준영속 상태로 만드는 방법 3 - 영속성 컨텍스트를 종료
+            em.close();
+*/
 
             /**
              * JPQL
